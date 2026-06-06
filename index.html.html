@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>고린도전서 전체 구조도 — 순천서남교회</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    background: #f8f5ee;
+    color: #2c2c2c;
+    padding: 30px 20px 50px;
+    line-height: 1.6;
+  }
+  h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #3b2a14;
+    margin-bottom: 6px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #7a6a55;
+    margin-bottom: 30px;
+  }
+
+  /* 큰 그림 박스 */
+  .overview {
+    background: #3b2a14;
+    color: #f9f2e4;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+  .overview .label { font-size: 0.75rem; opacity: 0.7; margin-bottom: 4px; }
+  .overview .title { font-size: 1.05rem; font-weight: 700; }
+  .overview .desc { font-size: 0.82rem; opacity: 0.85; margin-top: 6px; }
+
+  /* 단락 블록 */
+  .section {
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    padding: 14px 18px;
+    gap: 12px;
+  }
+  .section-badge {
+    background: rgba(255,255,255,0.25);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .section-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    flex: 1;
+  }
+  .section-keyword {
+    font-size: 0.72rem;
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 3px 10px;
+    white-space: nowrap;
+  }
+  .section-body {
+    background: white;
+    padding: 14px 18px;
+  }
+
+  /* 단락들 */
+  .unit {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid #f0ede6;
+  }
+  .unit:last-child { border-bottom: none; }
+  .unit-ref {
+    font-size: 0.72rem;
+    color: #a08060;
+    white-space: nowrap;
+    min-width: 70px;
+    padding-top: 2px;
+    font-weight: 600;
+  }
+  .unit-content {}
+  .unit-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin-bottom: 2px;
+  }
+  .unit-note {
+    font-size: 0.75rem;
+    color: #7a6a55;
+    line-height: 1.5;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 0.67rem;
+    border-radius: 4px;
+    padding: 1px 6px;
+    margin-left: 6px;
+    vertical-align: middle;
+    font-weight: 600;
+  }
+  .tag-q { background: #fff0d6; color: #b06a00; }
+  .tag-r { background: #f0f5ff; color: #2255aa; }
+
+  /* 색상 */
+  .c1 { background: #5c3d1e; color: #f9f2e4; } /* 서론 */
+  .c2 { background: #7b4f2a; color: #f9f2e4; } /* 1-4장 */
+  .c3 { background: #4a6741; color: #f0f8ed; } /* 5-6장 */
+  .c4 { background: #2e5f7a; color: #eaf5fb; } /* 7장 */
+  .c5 { background: #6b4e8a; color: #f4eeff; } /* 8-11장 */
+  .c6 { background: #8a4e2a; color: #fff0e8; } /* 12-14장 */
+  .c7 { background: #2a5e4e; color: #e8f8f4; } /* 15-16장 */
+
+  /* 핵심 메시지 */
+  .core-msg {
+    background: #fffbe6;
+    border: 1.5px solid #e8c84a;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    color: #5a4a00;
+  }
+  .core-msg strong { font-size: 0.9rem; display: block; margin-bottom: 4px; color: #3a3000; }
+
+  /* 구조 요약 */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .summary-card {
+    background: white;
+    border-radius: 10px;
+    padding: 12px 14px;
+    border-left: 4px solid;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+  .summary-card .sc-label { font-size: 0.7rem; color: #888; margin-bottom: 3px; }
+  .summary-card .sc-val { font-size: 0.82rem; font-weight: 600; color: #333; }
+
+  .footnote {
+    margin-top: 30px;
+    font-size: 0.75rem;
+    color: #999;
+    text-align: center;
+    border-top: 1px solid #e0d9cc;
+    padding-top: 16px;
+  }
+</style>
+</head>
+<body>
+
+<h1>📖 고린도전서 전체 구조도</h1>
+<p class="subtitle">순천서남교회 말씀 묵상 공동체</p>
+
+<!-- 큰 그림 -->
+<div class="overview">
+  <div class="label">편지의 성격과 핵심 메시지</div>
+  <div class="title">고린도 교회의 분열과 혼란 → 복음으로의 초대</div>
+  <div class="desc">바울이 에베소에서 고린도 교회의 여러 문제를 듣고 써 보낸 편지 (주후 약 54~55년경)<br>세속 도시 고린도의 가치관에 물든 교회를 향해 "십자가 복음"으로 진단하고 처방한다</div>
+</div>
+
+<!-- 편지 전체 구조 요약 카드 -->
+<div class="summary-grid">
+  <div class="summary-card" style="border-color:#7b4f2a;">
+    <div class="sc-label">전반부 (1–6장)</div>
+    <div class="sc-val">바울이 직접 들은 소식에 응답<br><small style="font-weight:400;color:#888;">글로에 집안이 전한 분열 문제</small></div>
+  </div>
+  <div class="summary-card" style="border-color:#2e5f7a;">
+    <div class="sc-label">후반부 (7–16장)</div>
+    <div class="sc-val">고린도 교인들의 질의에 응답<br><small style="font-weight:400;color:#888;">"너희가 쓴 것에 대하여" (7:1)</small></div>
+  </div>
+</div>
+
+<div class="core-msg">
+  <strong>🔑 고린도전서 읽기의 핵심</strong>
+  고린도전서는 "우리를 비추는 거울"이다. 세속적 가치관(지위·학벌·재능·언변)과 씨름하며
+  복음 공동체로 살아가야 하는 오늘 우리의 이야기가 2천 년 전 고린도 교회에 그대로 담겨 있다.
+</div>
+
+<!-- ===== 단락별 구조 ===== -->
+
+<!-- 서론 -->
+<div class="section">
+  <div class="section-header c1">
+    <span class="section-badge">서론</span>
+    <span class="section-title">인사 · 감사 · 편지의 배경</span>
+    <span class="section-keyword">1:1–9</span>
+  </div>
+  <div class="section-body">
+    <div class="unit">
+      <span class="unit-ref">1:1–3</span>
+      <div class="unit-content">
+        <div class="unit-title">발신자·수신자·인사말</div>
+        <div class="unit-note">바울이 자신을 "하나님의 뜻으로 부르심 받은 사도"로 소개. 고린도 교회를 "하나님의 교회"(단수)로 지칭 — 하나됨의 복선.</div>
+      </div>
+    </div>
+    <div class="unit">
+      <span class="unit-ref">1:4–9</span>
+      <div class="unit-content">
+        <div class="unit-title">감사 기도 — 뼈가 있는 칭찬</div>
+        <div class="unit-note">은사 풍성함에 감사하지만, 곧 그 은사가 분열의 원인이 됨을 암시하는 복선. "그리스도의 증거가 견고해졌다"는 칭찬 속에 이미 긴장이 깔려 있다.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 1-4장 -->
+<div class="section">
+  <div class="section-header c2">
+    <span class="section-badge">1–4장</span>
+    <span class="section-title">십자가의 복음과 교회 분열</span>
+    <span class="section-keyword">핵심 주제: 하나됨</span>
+  </div>
+  <div class="section-body">
+    <div class="unit">
+      <span class="unit-ref">1:10–17</span>
+      <div class="unit-content">
+        <div class="unit-title">분열의 현실을 폭로하다 <span class="tag tag-r">바울 직접 들음</span></div>
+        <div class="unit-note">글로에 집 사람들이 전한 소식 — "나는 바울에게, 나는 아볼로에게, 나는 게바에게, 나는 그리스도에게" 속했다는 파벌화. 세례를 빌미로 한 자기과시와 경쟁.</div>
+      </div>
+    </div>
+    <div class="unit">
+      <span class="unit-ref">1:18–2:5</span>
+      <div class="unit-content">
+        <div class="unit-title">십자가의 복음 — 어리석음이자 능력</div>
+        <div class="unit-note">세상의 지혜(웅변·학벌·지위)와 정반대인 십자가가 오히려 하나님의 능력이자 지혜. 바울 자신이 고린도에서 "약하고 두렵고 떨며" 전도한 이유.</div>
+      </div>
+    </div>
+    <div class="unit">
+      <span class="unit-ref">2:6–16</span>
+      <div class="unit-content">
+        <div class="unit-title">하나님의 지혜 — 성령으로만 알 수 있다</div>
+        <div class="unit-note">세상 통치자들이 알지 못한 감추어진 지혜. 성령께서 하나님의 깊은 것을 우리에게 알리신다. "우리는 그리스도의 마음을 가졌다."</div>
+      </div>
+    </div>
+    <div class="unit">
+      <span class="unit-ref">3:1–4:5</span>
+      <div class="unit-content">
+        <div class="unit-title">사역자는 청지기 — 판단은 하나님께</div>
+        <div class="unit-note">바울과 아볼로는 심고 물 주는 동역자일 뿐, 자라게 하시는 분은 하나님. 그리스도만이 유일한 터(기초). 사역자를 과대평가하여 파벌 짓는 것이 미성숙의 증거.</div>
+      </div>
+    </div>
+    <div class="unit">
+      <span class="unit-ref">4:6–21</span>
+      <div class="unit-content">
+        <div class="unit-title">이미 왕이 된 자들을 향한 풍자</div>
+        <div class="unit-note">고린도 교인들의 과도한 자부심("이미 배부르고, 이미 부유하고, 이미 왕이 되었다")을 신랄하게 풍자. 바울은 "죄수처럼" 살면서 복음을 전하는 아버지로 자신을 비교.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 5-6장 -->
+<div class="section">
+  <div class="section-header c3">
+    <span class="section-badge">5–6장</span>
+    <span class="section-title">공동체 안의 도덕적 비행 처리</span>
+    <span class="section-keyword">거룩한 공동체</span>
+  </div>
+  <div class="section-body">
+    <div class="unit">
+      <span class="unit-ref">5:1–13</span>
+      <div class="unit-content">
+        <div class="unit-title">아버지의 아내와 동거 — 공동체의 부끄러움</div>
+        <div class="unit-note">이방인도 하지 않는 심각한 음행. 교회가 오히려 자랑스러워하는(묵인하는) 상황. 바울은 엄격한 공동체 정화를 요청 — "밖의 사람은 하나님이 판단하시나 안의 사람은 교회가 판단하라."</div>
+      </div>
+    </div>
+    <div class="unit">
+      <span class="unit-ref">6:1–11</span>
+      <div class="unit-content">
+        <div class="unit-title">성도 간 세속 법정 소송 금지</div>
+        <div class="unit-note">형제끼리 세상 법정에 서는 것은 이미 패배. 차라리 불의를 당하라. 불의한 자가 하나님 나라를 상속받지 못한다는 원칙 재확인.</div>
+      </div>
+    </div>
+    <div class="unit">
+      <span class="unit-ref">6:12–20</span>
+      <div class="unit-content">
+        <div class="unit-title">몸의 신학 — "너희 몸은 성령의 전"</div>
+        <div class="unit-note">"모든 것이 내게 유익하다"는 자유를 남용하지 말라. 음행은 그리스도의 몸을 더럽히는 것. 몸으로 하나님께 영광 돌리라.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 7장 -->
+<div class="section">
+  <div class="section-header c4">
+    <span class="section-badge">7장</span>
+    <span class="section-title">결혼과 독신에 관한 질의 응답</span>
+    <span class="section-keyword">상황 속의 소명 <span class="tag tag-q" style="color:#fff;background:rgba(255,255,255,0.3);">교인 질의 응답</span></span>
+  </div>
+  <div class="section-body">
+    <div class="unit">
+      <span class="unit-ref">7:1–40</span>
+      <div class="unit-content">
+        <div class="unit-title">독신 선호, 결혼도 죄는 아니다 — 상황 윤리</div>
+        <div class="unit-note">바울의 개인적 선호는 독신이나, 결혼은 죄가 아니다. 결혼한 자는 배우자에게 의무를 다하라. 핵심 원칙: "부르심을 받은 그 상태에 그대로 있으라." 주님의 재림이 임박했다는 종말론적 긴박감이 배경.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 8-11장 -->
+<div class="section">
+  <div class="section-header c5">
+    <span class="section-badge">8–11장</span>
+    <span class="section-title">우상 제물·사도 권리·예배 질서</span>
+    <span class="section-keyword">다른 이를 위한 자유 포기</span>
+  </div>
+  <div class="section-body">
+    <div class="unit">
+      <span class="unit-ref">8:1–13</span>
+      <div class="unit-content">
+        <div class="unit-title">우상 제물 — 지식보다 사랑이 먼저 <span class="tag tag-q">교인 질의 응답</span></div>
+        <div class="unit-note">우상은 아무것도 아니므로 먹어도 된다(지식). 그러나 믿음이 약한 형제를 실족시키면 안 된다(사랑). 지식은 교만하게 하고, 사랑은 덕을 세운다.</div>
+      </div>
+    </div>
+    <div class="unit">
+      <span class="unit-ref">9:1–27</span>
+      <div class="unit-content">
+        <div class="unit-title">바울 자신의 사도 권리 포기 — 나를 보라</div>
+        <div class="unit-note">사도로서 재정 후원받을 권리가 있으나 쓰지 않았다. 복음을 위해 자신의 정당한 권리를 스스로 포기하는 것이 진정한 자유. "모든 사람에게 모든 것이 되었다."</div>
+      </div>
+    </div>
+    <div class="unit">
+      <span class="unit-ref">10:1–22</span>
+      <div class="unit-content">
+        <div class="unit-title">출애굽 이스라엘의 경고 — 우상숭배의 위험</div>
+        <div class="unit-note">광야 이스라엘의 실패를 거울로 제시. 성찬에 참여하면서 우상의 상에도 참여할 수 없다. "선 줄로 아는 자는 넘어질까 조심하라."</div>
+      </div>
+    </div>
+    <div class="unit">
+      <span class="unit-ref">11:1–16</span>
+      <div class="unit-content">
+        <div class="unit-title">예배 중 여성의 차림새 문제</div>
+        <div class="unit-note">문화적·사회적 맥락이 강하게 반영된 단락. 당시 여성 헤어스타일과 사회적 정숙의 코드. 오늘 우리에게는 문화 맥락이 달라 직접 적용 어려움 — 창조 원리(머리됨)의 해석이 관건.</div>
+      </div>
+    </div>
+    <div class="unit">
+      <span class="unit-ref">11:17–34</span>
+      <div class="unit-content">
+        <div class="unit-title">성찬의 파행 — 함께 먹는 것이 성찬이다</div>
+        <div class="unit-note">부유한 자들은 배불리 먹고 가난한 자들은 굶는 성찬. 주의 몸을 분별하지 못하고 먹는 것이 심판. 성찬의 핵심은 그리스도의 죽음을 선포하는 공동체적 행위.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 12-14장 -->
+<div class="section">
+  <div class="section-header c6">
+    <span class="section-badge">12–14장</span>
+    <span class="section-title">성령의 은사 — 다양성과 하나됨</span>
+    <span class="section-keyword">은사는 공동체 세움을 위해</span>
+  </div>
+  <div class="section-body">
+    <div class="unit">
+      <span class="unit-ref">12:1–31</span>
+      <div class="unit-content">
+        <div class="unit-title">한 성령·다양한 은사·한 몸의 원리</div>
+        <div class="unit-note">은사의 원천은 한 성령이시나 표현은 다양하다. 몸의 비유 — 어떤 지체도 다른 지체를 "나는 네가 필요 없다"고 할 수 없다. 방언은 목록의 맨 끝 — 의도적 배치.</div>
+      </div>
+    </div>
+    <div class="unit">
+      <span class="unit-ref">13:1–13</span>
+      <div class="unit-content">
+        <div class="unit-title">사랑 — 은사의 목적이자 더욱 큰 길</div>
+        <div class="unit-note">12장과 14장 사이에 전략적으로 배치. 아무리 탁월한 은사라도 사랑 없으면 아무것도 아니다. 은사는 한시적이나 사랑은 영원하다. 믿음·소망·사랑 중 제일은 사랑.</div>
+      </div>
+    </div>
+    <div class="unit">
+      <span class="unit-ref">14:1–40</span>
+      <div class="unit-content">
+        <div class="unit-title">예언 > 방언 — 공동체 덕을 세우는 기준</div>
+        <div class="unit-note">방언은 자신을 세우고 예언은 교회를 세운다. 통역 없는 방언은 예배 시 자제. 모든 것을 "덕을 세우기 위해" 하라. 예언하는 자의 영은 스스로 제재받을 수 있다.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 15-16장 -->
+<div class="section">
+  <div class="section-header c7">
+    <span class="section-badge">15–16장</span>
+    <span class="section-title">부활의 복음 · 마무리 권면</span>
+    <span class="section-keyword">부활 없이는 복음도 없다</span>
+  </div>
+  <div class="section-body">
+    <div class="unit">
+      <span class="unit-ref">15:1–34</span>
+      <div class="unit-content">
+        <div class="unit-title">부활 — 복음의 핵심, 신앙의 근거</div>
+        <div class="unit-note">그리스도의 부활은 역사적 사실 (목격자 목록). 그리스도가 살아나지 않았다면 우리 믿음도 헛되다. 예수의 부활 = "잠자는 자들의 첫 열매" — 우리 부활의 보증. 죄와 사망의 최종 정복.</div>
+      </div>
+    </div>
+    <div class="unit">
+      <span class="unit-ref">15:35–58</span>
+      <div class="unit-content">
+        <div class="unit-title">부활의 몸은 어떤 모습인가?</div>
+        <div class="unit-note">씨앗과 열매의 비유 — 심겨진 몸과 살아나는 몸은 연속성과 불연속성이 있다. 아담 안에서 죽음, 그리스도 안에서 부활. 마지막 원수인 사망도 멸망될 것이다.</div>
+      </div>
+    </div>
+    <div class="unit">
+      <span class="unit-ref">16:1–24</span>
+      <div class="unit-content">
+        <div class="unit-title">예루살렘 구제헌금 · 방문 계획 · 마무리 인사</div>
+        <div class="unit-note">매 주 첫날 예루살렘 성도를 위한 연보 준비. 아볼로·디모데 등 동역자에 대한 당부. 사랑으로 모든 일을 하라 — 편지의 마지막 요약.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 전체 흐름 요약 -->
+<div class="core-msg" style="border-color:#8a4e2a;background:#fff8f0;">
+  <strong>📌 강의 전체를 관통하는 3가지 구조적 특징</strong>
+  <ol style="padding-left:18px;line-height:2;">
+    <li><b>진단과 처방</b> — 세속 도시 고린도의 가치관(지위·웅변·은사 자랑)에 물든 교회를 복음으로 진단한다</li>
+    <li><b>원론 → 적용</b> — 신학적 원칙(1-4장 십자가 복음)이 먼저 제시되고, 구체적 문제(5-16장)가 그 빛 아래에서 다루어진다</li>
+    <li><b>하나됨의 모티프</b> — 분열(1-4장), 법정(6장), 성찬(11장), 은사(12-14장)… 매 단락이 공동체의 하나됨으로 수렴된다</li>
+  </ol>
+</div>
+
+<div class="footnote">
+  순천서남교회 말씀 공동체
+</div>
+
+</body>
+</html>
